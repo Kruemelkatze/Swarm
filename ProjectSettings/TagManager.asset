@@ -13,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Walls
+  - Fish
+  - Enemies
+  - SwarmElement
+  - ClutterBackground
+  - ClutterForeground
+  - Obstacles
   - 
   - 
   - 
@@ -38,6 +38,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 1448901341
+    locked: 0
+  - name: ClutterBackground
+    uniqueID: 3123867775
+    locked: 0
+  - name: EffectsBackground
+    uniqueID: 1150208003
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Fish
+    uniqueID: 3438992997
+    locked: 0
+  - name: Enemies
+    uniqueID: 1516454895
+    locked: 0
+  - name: ForegroundClutter
+    uniqueID: 1166663407
+    locked: 0
+  - name: ForegroundEffects
+    uniqueID: 3887270429
     locked: 0
