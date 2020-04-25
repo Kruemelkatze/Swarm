@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using DG.Tweening.Core;
@@ -16,6 +17,11 @@ public class Swarm : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private TweenerCore<Quaternion, Quaternion, NoOptions> _rotationTweener;
+
+    void Awake()
+    {
+        Hub.Register(this);
+    }
 
     // Start is called before the first frame update
     void Start()

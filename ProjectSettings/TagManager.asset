@@ -20,7 +20,7 @@ TagManager:
   - ClutterBackground
   - ClutterForeground
   - Obstacles
-  - 
+  - CameraCollider
   - 
   - 
   - 

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 /// </summary>
 public class Hub : PersistentSingleton<Hub>
 {
-    [ReadOnly] public Dictionary<Type, object> registrations = new Dictionary<Type, object>();
+    [ReadOnly] private Dictionary<Type, object> registrations = new Dictionary<Type, object>();
 
     void Awake()
     {
@@ -39,5 +39,10 @@ public class Hub : PersistentSingleton<Hub>
             Instance.registrations[typeof(T)] = obj;
 
         return obj;
+    }
+
+    public static void Unregister<T>(T obj) where T : UnityEngine.Object
+    {
+        Instance.registrations.Remove(typeof(T));
     }
 }
