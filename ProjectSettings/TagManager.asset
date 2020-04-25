@@ -41,6 +41,9 @@ TagManager:
   - name: BG
     uniqueID: 1448901341
     locked: 0
+  - name: BG1
+    uniqueID: 902261281
+    locked: 0
   - name: ClutterBackground
     uniqueID: 3123867775
     locked: 0
@@ -58,6 +61,9 @@ TagManager:
     locked: 0
   - name: ForegroundClutter
     uniqueID: 1166663407
+    locked: 0
+  - name: Wall
+    uniqueID: 3101826241
     locked: 0
   - name: ForegroundEffects
     uniqueID: 3887270429

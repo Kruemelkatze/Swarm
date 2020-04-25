@@ -159,7 +159,6 @@ MonoBehaviour:
   maxSwarmDepthMeters: 0
   swarmDepthMeters: 0
   swarmDepthUnits: 0
-  cameraDepthUnits: 0
   uiUpdateInterval: 0.5
   depthTextField: {fileID: 0}
   maxDepthTextField: {fileID: 0}

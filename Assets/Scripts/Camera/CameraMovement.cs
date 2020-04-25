@@ -7,6 +7,9 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] [Range(-1, 5)] private float verticalSpeed = 1f;
+    [SerializeField] [Range(0, 5)] private float startDelay = 2;
+
+    private float _effectiveSpeed = 0;
 
     public bool maxTopForTopOfViewport = true;
     public Transform maxTop;
@@ -42,13 +45,23 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
+        if (startDelay > 0)
+        {
+            startDelay -= Time.deltaTime;
+            return;
+        }
+
+        _effectiveSpeed += verticalSpeed * Time.deltaTime;
+        _effectiveSpeed = Mathf.Min(_effectiveSpeed, verticalSpeed);
+        
+        
         var pos = transform.position;
 
         var viewPortTop = cam.ViewportToWorldPoint(Vector2.up);
         var verticalDiff = viewPortTop.y - pos.y;
         float topRef = 0, bottomRef = 0;
 
-        var nextY = pos.y - verticalSpeed * Time.deltaTime;
+        var nextY = pos.y - _effectiveSpeed * Time.deltaTime;
         if (maxTop)
         {
             topRef = maxTop.position.y - (maxTopForTopOfViewport ? verticalDiff : 0);
