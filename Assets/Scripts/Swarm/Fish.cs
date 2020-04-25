@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Fish : MonoBehaviour
 {
@@ -13,12 +14,15 @@ public class Fish : MonoBehaviour
     [SerializeField] private float movementSpeed = 3;
     [SerializeField] private float rotationSpeed = 5;
 
+    [SerializeField] [Min(0)] private float speedVariation = 1;
+    
     public int index;
 
     public bool isEnabled = true;
     // Start is called before the first frame update
     void Start()
     {
+        movementSpeed = movementSpeed + Random.Range(-speedVariation, speedVariation);
     }
 
     // Update is called once per frame
@@ -28,17 +32,22 @@ public class Fish : MonoBehaviour
         {
             return;
         }
-        var diff = lookAtTransform.position - transform.position;
+        var pos = transform.position;
+        
+        // Pos
+        var targetPosition = 
+            targetTransform.position +
+            targetTransform.rotation * relativeTargetPosition;
+        transform.position = Vector3.Lerp(pos, targetPosition, Time.deltaTime * movementSpeed);
+        
+        // Rot
+        //var diff = lookAtTransform.position - pos;
+        var diff = transform.position - pos;
         diff.Normalize();
         float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         var targetRotation = Quaternion.Euler(0f, 0f, rotZ - 90);
         
-        var targetPosition = 
-            targetTransform.position +
-            targetTransform.rotation * relativeTargetPosition; 
-
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * movementSpeed);
-        // transform.rotation = Quaternion.Lerp(transform.rotation, targetTransform.rotation, Time.deltaTime * 100);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, targetTransform.rotation, Time.deltaTime * rotationSpeed);
         transform.rotation = targetRotation;
     }
     

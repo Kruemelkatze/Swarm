@@ -14,7 +14,8 @@ public class FishSpawner : MonoBehaviour
 
     [SerializeField] private Transform fishContainer;
     [SerializeField] private Transform spawnLocation;
-
+    [SerializeField] private Transform fishesLookAt;
+    
     [SerializeField] private Color[] fishColors;
 
     [Header("Spawn Settings")] [SerializeField]
@@ -99,7 +100,7 @@ public class FishSpawner : MonoBehaviour
             var color = fishColors[Random.Range(0, fishColors.Length)];
             fishScript.index = index;
             fishScript.SetColor(color);
-            fishScript.SetTarget(spawnLocation, _spawnLocations[index], transform);
+            fishScript.SetTarget(spawnLocation, _spawnLocations[index], fishesLookAt);
 
             fishes.Add(fishScript);
         }

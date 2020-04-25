@@ -10,10 +10,8 @@ public class Swarm : MonoBehaviour
 {
     [SerializeField] [Range(0.1f, 5)] private float speed = 1;
     [SerializeField] [Range(0, 2)] private float rotationDuration = 0.3f;
-
-    [SerializeField] [Range(1, 4)] int controlSharpness = 1;
-
-    [SerializeField] private Vector2 velocity;
+    [SerializeField] [Range(1, 4)] private int controlSharpness = 1;
+    [SerializeField] [Min(0)] private float idleAngularSpeed;
 
     private Rigidbody2D _rigidbody2D;
     //private TweenerCore<Quaternion, Quaternion, NoOptions> _rotationTweener;
@@ -65,6 +63,11 @@ public class Swarm : MonoBehaviour
             // {
             //     _rotationTweener = _rotationTweener.ChangeEndValue(rot, rotationDuration);
             // }
+        }
+        else
+        {
+            // Idle
+            transform.Rotate(0,0, idleAngularSpeed * Time.deltaTime);
         }
     }
 }
