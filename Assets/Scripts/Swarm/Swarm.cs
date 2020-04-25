@@ -20,7 +20,7 @@ public class Swarm : MonoBehaviour
 
     void Awake()
     {
-        Hub.Register(this);
+        Hub.Register<Swarm>(this);
     }
 
     // Start is called before the first frame update

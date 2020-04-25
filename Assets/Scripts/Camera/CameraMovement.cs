@@ -13,6 +13,13 @@ public class CameraMovement : MonoBehaviour
     public bool maxBottomForBottomOfViewport = true;
     public Transform maxBottom;
 
+    [SerializeField] private float depthPercentage = 0;
+
+    void Awake()
+    {
+        Hub.Register(this);
+    }
+
     void Start()
     {
         cam = cam ? cam : Camera.main;
@@ -36,36 +43,40 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         var pos = transform.position;
+
+        var viewPortTop = cam.ViewportToWorldPoint(Vector2.up);
+        var verticalDiff = viewPortTop.y - pos.y;
+        float topRef = 0, bottomRef = 0;
+
         var nextY = pos.y - verticalSpeed * Time.deltaTime;
         if (maxTop)
         {
-            if (maxTopForTopOfViewport)
-            {
-                var p = cam.ViewportToWorldPoint(Vector2.up);
-                var diff = p.y - pos.y;
-                nextY = Mathf.Min(nextY, maxTop.position.y - diff);
-            }
-            else
-            {
-                nextY = Mathf.Min(nextY, maxTop.position.y);
-            }
+            topRef = maxTop.position.y - (maxTopForTopOfViewport ? verticalDiff : 0);
+            nextY = Mathf.Min(nextY, topRef);
         }
 
         if (maxBottom)
         {
-            if (maxBottomForBottomOfViewport)
+            bottomRef = maxBottom.position.y + (maxBottomForBottomOfViewport ? verticalDiff : 0);
+            nextY = Mathf.Max(nextY, bottomRef);
+        }
+
+        if (maxTop && maxBottom)
+        {
+            var length = topRef - bottomRef;
+            if (length > 0)
             {
-                var p = cam.ViewportToWorldPoint(Vector2.zero);
-                var diff = p.y - pos.y;
-                nextY = Mathf.Max(nextY, maxBottom.position.y - diff);
+                var distance = topRef - nextY;
+                depthPercentage = Mathf.Abs(distance / length);
             }
             else
             {
-                // y is negative!
-                nextY = Mathf.Max(nextY, maxBottom.position.y);
+                depthPercentage = 0;
             }
         }
 
         transform.position = new Vector3(pos.x, nextY, pos.z);
     }
+
+    public float GetDepthPercentage() => depthPercentage;
 }

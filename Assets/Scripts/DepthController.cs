@@ -19,7 +19,6 @@ public class DepthController : MonoBehaviour
     [SerializeField] private float maxSwarmDepthMeters;
     [SerializeField] private float swarmDepthMeters;
     [SerializeField] private float swarmDepthUnits;
-    [SerializeField] private float cameraDepthUnits;
 
     [Header("UI")] //
     [Range(0, 1)]
@@ -55,8 +54,6 @@ public class DepthController : MonoBehaviour
         maxSwarmDepthUnits = Mathf.Max(maxSwarmDepthUnits, swarmDepthUnits);
         swarmDepthMeters = UnitDepthToMeterDepth(swarmDepthUnits);
         maxSwarmDepthMeters = UnitDepthToMeterDepth(maxSwarmDepthUnits);
-
-        cameraDepthUnits = GetDepthOfElement(Camera.main.transform);
 
         // UI Updates (depoll!
         _uiUpdateTimer -= Time.deltaTime;
@@ -100,5 +97,4 @@ public class DepthController : MonoBehaviour
     public float GetMaxSwarmDepthMeters() => maxSwarmDepthMeters;
     public float GetSwarmDepthMeters() => swarmDepthMeters;
     public float GetSwarmDepthUnits() => swarmDepthUnits;
-    public float GetCameraDepthUnits() => swarmDepthUnits;
 }
