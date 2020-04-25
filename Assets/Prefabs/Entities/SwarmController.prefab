@@ -453,6 +453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5047058742207528460}
   - component: {fileID: 5047058742207528467}
+  - component: {fileID: 6266265415250462080}
   - component: {fileID: 5047058742207528466}
   - component: {fileID: 5047058742207528465}
   - component: {fileID: 5047058742207528464}
@@ -494,6 +495,33 @@ MonoBehaviour:
   rotationDuration: 0.15
   controlSharpness: 1
   velocity: {x: 0, y: 0}
+--- !u!114 &6266265415250462080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5047058742207528461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c96d8e44de8102459a2804d0ac9793c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishPrefab: {fileID: 0}
+  fishContainer: {fileID: 0}
+  fishColors:
+  - {r: 0.9764706, g: 0.92941177, b: 0.4509804, a: 1}
+  - {r: 0.972549, g: 0.8352941, b: 0.42745098, a: 1}
+  - {r: 0.99607843, g: 0.972549, b: 0.74509805, a: 1}
+  - {r: 0.9098039, g: 0.69803923, b: 0.2, a: 1}
+  spawnCount: 10
+  maxFishSpawns: 0
+  spawnRadius: 3
+  fishRadius: 0.2
+  drawDebugInfo: 1
+  fishes: []
+  _spawnLocations:
+  - {x: 0, y: 1}
 --- !u!212 &5047058742207528466
 SpriteRenderer:
   m_ObjectHideFlags: 0

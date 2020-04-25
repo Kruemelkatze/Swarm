@@ -39,7 +39,6 @@ public class Swarm : MonoBehaviour
             Mathf.Abs(Mathf.Pow(x, controlSharpness)) * Mathf.Sign(x),
             Mathf.Abs(Mathf.Pow(y, controlSharpness)) * Mathf.Sign(y)), 1);
         _rigidbody2D.velocity = movementDirection * speed;
-
         if(_rotationTweener != null && _rotationTweener.IsActive())
         {
             _rotationTweener.Kill();
