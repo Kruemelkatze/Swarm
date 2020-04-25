@@ -12,7 +12,11 @@ public class Swarm : MonoBehaviour
     [SerializeField] [Range(0, 2)] private float rotationDuration = 0.3f;
     [SerializeField] [Range(1, 4)] private int controlSharpness = 1;
     [SerializeField] [Min(0)] private float idleAngularSpeed;
+    [SerializeField] private Vector3 stretchFactor = new Vector3(0.8f, 1.1f, 1);
+    [SerializeField] private Vector3 stretchOffset = new Vector3(1,1,0);
 
+    private Vector3 _effectiveStretchFactor = Vector3.one;
+    
     private Rigidbody2D _rigidbody2D;
     //private TweenerCore<Quaternion, Quaternion, NoOptions> _rotationTweener;
     private TweenerCore<Quaternion, Vector3, QuaternionOptions> _rotationTweener;
@@ -27,7 +31,6 @@ public class Swarm : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
-
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -63,11 +66,17 @@ public class Swarm : MonoBehaviour
             // {
             //     _rotationTweener = _rotationTweener.ChangeEndValue(rot, rotationDuration);
             // }
+            _effectiveStretchFactor = stretchFactor;
         }
         else
         {
             // Idle
             transform.Rotate(0,0, idleAngularSpeed * Time.deltaTime);
+            _effectiveStretchFactor = Vector3.one;
         }
     }
-}
+
+    public Vector3 GetStretchFactor() => _effectiveStretchFactor;
+    public Vector3 GetStretchOffset() => stretchOffset;
+
+}   

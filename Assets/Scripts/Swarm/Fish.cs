@@ -18,26 +18,24 @@ public class Fish : MonoBehaviour
     
     public int index;
 
-    public bool isEnabled = true;
+    private Swarm _swarm;
+    
     // Start is called before the first frame update
     void Start()
     {
         movementSpeed = movementSpeed + Random.Range(-speedVariation, speedVariation);
+        _swarm = Hub.Get<Swarm>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isEnabled)
-        {
-            return;
-        }
         var pos = transform.position;
         
         // Pos
         var targetPosition = 
             targetTransform.position +
-            targetTransform.rotation * relativeTargetPosition;
+            targetTransform.rotation * Vector3.Scale(relativeTargetPosition, _swarm.GetStretchFactor());
         transform.position = Vector3.Lerp(pos, targetPosition, Time.deltaTime * movementSpeed);
         
         // Rot

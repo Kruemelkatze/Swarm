@@ -2348,6 +2348,31 @@ PrefabInstance:
       propertyPath: idleAngularSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 814285275479673716, guid: ebfd7f079dae6d04ba1767cafe770369,
+        type: 3}
+      propertyPath: stretchOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 814285275479673716, guid: ebfd7f079dae6d04ba1767cafe770369,
+        type: 3}
+      propertyPath: stretchOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 814285275479673716, guid: ebfd7f079dae6d04ba1767cafe770369,
+        type: 3}
+      propertyPath: stretchOffset.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 814285275479673716, guid: ebfd7f079dae6d04ba1767cafe770369,
+        type: 3}
+      propertyPath: stretchFactor.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 814285275479673716, guid: ebfd7f079dae6d04ba1767cafe770369,
+        type: 3}
+      propertyPath: stretchFactor.y
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1995114678452416743, guid: ebfd7f079dae6d04ba1767cafe770369,
         type: 3}
       propertyPath: spawnCount
