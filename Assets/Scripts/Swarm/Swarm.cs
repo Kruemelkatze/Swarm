@@ -15,6 +15,8 @@ public class Swarm : MonoBehaviour
     [SerializeField] private Vector3 stretchFactor = new Vector3(0.8f, 1.1f, 1);
     [SerializeField] private Vector3 stretchOffset = new Vector3(1,1,0);
 
+    [SerializeField] private bool isSplit;
+    
     private Vector3 _effectiveStretchFactor = Vector3.one;
     
     private Rigidbody2D _rigidbody2D;
@@ -41,6 +43,11 @@ public class Swarm : MonoBehaviour
         {
             _rigidbody2D.velocity = Vector2.down * 0.01f;
             return;
+        }
+
+        if (Input.GetButtonDown("Fire1") && !this.isSplit)
+        {
+            isSplit = true;
         }
         
         var x = Input.GetAxis("Horizontal");
