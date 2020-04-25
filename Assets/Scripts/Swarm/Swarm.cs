@@ -40,6 +40,11 @@ public class Swarm : MonoBehaviour
             Mathf.Abs(Mathf.Pow(y, controlSharpness)) * Mathf.Sign(y)), 1);
         _rigidbody2D.velocity = movementDirection * speed;
 
+        if(_rotationTweener != null && _rotationTweener.IsActive())
+        {
+            _rotationTweener.Kill();
+        }
+        
         if (new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).sqrMagnitude > 0.1f)
         {
             float angle = Mathf.Atan2(movementDirection.y, movementDirection.x) * Mathf.Rad2Deg - 90f;
@@ -48,6 +53,7 @@ public class Swarm : MonoBehaviour
             //transform.rotation = rot;
             // if (_rotationTweener == null)
             // {
+            
             _rotationTweener = transform.DORotateQuaternion(rot, rotationDuration);
             // }
             // else

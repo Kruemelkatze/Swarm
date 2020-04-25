@@ -375,6 +375,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwarmController
       objectReference: {fileID: 0}
+    - target: {fileID: 5890731590911469279, guid: 47d7428fc5f126c45bbd1dde600c9ff1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47d7428fc5f126c45bbd1dde600c9ff1, type: 3}
 --- !u!4 &814285275479673707 stripped
