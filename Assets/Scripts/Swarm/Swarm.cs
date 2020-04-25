@@ -16,6 +16,7 @@ public class Swarm : MonoBehaviour
     [SerializeField] private Vector3 stretchOffset = new Vector3(1,1,0);
 
     [SerializeField] private bool isSplit;
+    [SerializeField] [Range(0, 5)] private float splitDuration = 1.5f;
     
     private Vector3 _effectiveStretchFactor = Vector3.one;
     
@@ -37,7 +38,7 @@ public class Swarm : MonoBehaviour
         gc = Hub.Get<GameController>();
     }
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (!gc.IsActive())
         {
@@ -45,9 +46,9 @@ public class Swarm : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Fire1") && !this.isSplit)
+        if ((Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space)) && !isSplit)
         {
-            isSplit = true;
+            StartCoroutine(Split());
         }
         
         var x = Input.GetAxis("Horizontal");
@@ -92,6 +93,17 @@ public class Swarm : MonoBehaviour
         }
     }
 
+    private IEnumerator Split()
+    {
+        Debug.Log("Split");
+        isSplit = true;
+        //Volume Stuff
+        yield return new WaitForSeconds(splitDuration);
+        isSplit = false;
+        Debug.Log("Unite");
+    }
+
+    public bool IsSplit => isSplit;
     public Vector3 GetStretchFactor() => _effectiveStretchFactor;
     public Vector3 GetStretchOffset() => stretchOffset;
 

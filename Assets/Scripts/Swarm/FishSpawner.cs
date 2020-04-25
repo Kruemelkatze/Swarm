@@ -16,8 +16,14 @@ public class FishSpawner : MonoBehaviour
     [SerializeField] private Transform spawnLocation;
     [SerializeField] private Transform fishesLookAt;
 
-    
     [SerializeField] private Color[] fishColors;
+
+    [Header("Split Settings")] [SerializeField]
+    private Transform splitLeftLocation;
+
+    [SerializeField] private Transform splitLeftLookAt;
+    [SerializeField] private Transform splitRightLocation;
+    [SerializeField] private Transform splitRightLookAt;
 
     [Header("Spawn Settings")] [SerializeField]
     private int spawnCount = 10;
@@ -37,7 +43,6 @@ public class FishSpawner : MonoBehaviour
     [SerializeField] [Min(0)] private float growthTick = 1;
     [SerializeField] [Min(0)] private float growthRate = 1;
 
-
     private void Awake()
     {
         Hub.Register<FishSpawner>(this);
@@ -50,7 +55,6 @@ public class FishSpawner : MonoBehaviour
         {
             return;
         }
-
 
         Gizmos.DrawWireSphere(spawnLocation.position, spawnRadius);
 
@@ -106,7 +110,16 @@ public class FishSpawner : MonoBehaviour
             var color = fishColors[Random.Range(0, fishColors.Length)];
             fishScript.index = index;
             fishScript.SetColor(color);
-            fishScript.SetTarget(spawnLocation, _spawnLocations[index], fishesLookAt);
+            var localPos = _spawnLocations[index];
+            var isLeftFish = localPos.x < 0;
+            
+            fishScript.SetTarget(
+                spawnLocation, 
+                fishesLookAt, 
+                isLeftFish ? splitLeftLocation : splitRightLocation,
+                isLeftFish ? splitLeftLookAt : splitRightLookAt,
+                _spawnLocations[index]
+                );
 
             fishes.Add(fishScript);
         }
