@@ -16,7 +16,8 @@ public class Swarm : MonoBehaviour
     [SerializeField] private Vector2 velocity;
 
     private Rigidbody2D _rigidbody2D;
-    private TweenerCore<Quaternion, Quaternion, NoOptions> _rotationTweener;
+    //private TweenerCore<Quaternion, Quaternion, NoOptions> _rotationTweener;
+    private TweenerCore<Quaternion, Vector3, QuaternionOptions> _rotationTweener;
 
     void Awake()
     {
@@ -30,7 +31,7 @@ public class Swarm : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         var x = Input.GetAxis("Horizontal");
         var y = Input.GetAxis("Vertical");
@@ -39,6 +40,7 @@ public class Swarm : MonoBehaviour
             Mathf.Abs(Mathf.Pow(x, controlSharpness)) * Mathf.Sign(x),
             Mathf.Abs(Mathf.Pow(y, controlSharpness)) * Mathf.Sign(y)), 1);
         _rigidbody2D.velocity = movementDirection * speed;
+        
         if(_rotationTweener != null && _rotationTweener.IsActive())
         {
             _rotationTweener.Kill();
@@ -49,11 +51,15 @@ public class Swarm : MonoBehaviour
             float angle = Mathf.Atan2(movementDirection.y, movementDirection.x) * Mathf.Rad2Deg - 90f;
             var rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
+            var vec3End = new Vector3(rot.eulerAngles.x, rot.eulerAngles.y, rot.eulerAngles.z);
+
+            _rotationTweener = transform.DORotate(vec3End, rotationDuration, RotateMode.Fast);
+
             //transform.rotation = rot;
             // if (_rotationTweener == null)
             // {
-            
-            _rotationTweener = transform.DORotateQuaternion(rot, rotationDuration);
+
+            //_rotationTweener = transform.DORotateQuaternion(rot, rotationDuration);
             // }
             // else
             // {
