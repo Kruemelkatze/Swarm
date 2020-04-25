@@ -8,10 +8,9 @@ public class DepthAudioFilterController : MonoBehaviour
 {
 
     [SerializeField] private AudioLowPassFilter audioLowPassFilter;
-    [Tooltip("Uses")]
+    [Tooltip("X-Axis: Percentage of completed level distance [0,1]. Y-Axis: Cutoff Frequency.")]
     [HideInInspector] public AnimationCurve lowPassCurve;
     
-
     // Update is called once per frame
     void Update()
     {
