@@ -13,6 +13,9 @@ public class FishSpawner : MonoBehaviour
     private GameObject fishPrefab;
 
     [SerializeField] private Transform fishContainer;
+    [SerializeField] private Transform spawnLocation;
+    [SerializeField] private Transform fishesLookAt;
+    
     [SerializeField] private Color[] fishColors;
 
     [Header("Spawn Settings")] [SerializeField]
@@ -29,6 +32,10 @@ public class FishSpawner : MonoBehaviour
     [SerializeField] private List<Fish> fishes = new List<Fish>();
     [SerializeField] private List<Vector2> _spawnLocations = new List<Vector2>() {Vector2.up};
 
+    private void Awake()
+    {
+        Hub.Register<FishSpawner>(this);
+    }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
@@ -39,14 +46,14 @@ public class FishSpawner : MonoBehaviour
         }
 
 
-        Gizmos.DrawWireSphere(transform.position, spawnRadius);
+        Gizmos.DrawWireSphere(spawnLocation.position, spawnRadius);
 
         for (int i = 0; i < _spawnLocations.Count; i++)
         {
             var loc = _spawnLocations[i];
             var c = new Color(1, 1, 0, 1 - ((float) i / _spawnLocations.Count));
             Gizmos.color = c;
-            Gizmos.DrawSphere(transform.position + (Vector3) loc, fishRadius);
+            Gizmos.DrawSphere(spawnLocation.position + (Vector3) loc, fishRadius);
         }
     }
 #endif
@@ -84,11 +91,17 @@ public class FishSpawner : MonoBehaviour
             var fish = Instantiate(fishPrefab, fishContainer);
             var fishScript = fish.GetComponent<Fish>();
 
-            fish.transform.position = transform.position + (Vector3) _spawnLocations[index];
+            fish.transform.position = spawnLocation.position + (Vector3) _spawnLocations[index];
+            // var diff = transform.position - fish.transform.position;
+            // diff.Normalize();
+            // float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            // fish.transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90);
+
             var color = fishColors[Random.Range(0, fishColors.Length)];
+            fishScript.index = index;
             fishScript.SetColor(color);
-            fishScript.SetTargetPosition(fish.transform.position);
-            
+            fishScript.SetTarget(spawnLocation, _spawnLocations[index], fishesLookAt);
+
             fishes.Add(fishScript);
         }
     }
@@ -103,6 +116,16 @@ public class FishSpawner : MonoBehaviour
         fishes.Clear();
 
         Spawn(maxFishSpawns);
+    }
+
+    public void RemoveFish(Fish fish)
+    {
+        fishes.Remove(fish);
+        var pos = _spawnLocations[fish.index];
+        _spawnLocations.RemoveAt(fish.index);
+        _spawnLocations.Add(pos);
+
+        fish.Eaten();
     }
 
 
@@ -125,12 +148,14 @@ public class FishSpawner : MonoBehaviour
             {
                 spawner.PrepareSpawnLocations();
             }
+
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("Spawn 1"))
             {
                 spawner.Spawn(1);
             }
+
             if (GUILayout.Button("Spawn K"))
             {
                 spawner.Spawn();
