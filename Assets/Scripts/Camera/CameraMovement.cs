@@ -21,11 +21,12 @@ public class CameraMovement : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        var p = cam.ViewportToWorldPoint(new Vector2(0.5f, 1));
+        var lCam = cam ? cam : Camera.main;
+        var p = lCam.ViewportToWorldPoint(new Vector2(0.5f, 1));
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(p, 0.1F);
 
-        p = cam.ViewportToWorldPoint(new Vector2(0.5f, 0));
+        p = lCam.ViewportToWorldPoint(new Vector2(0.5f, 0));
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(p, 0.1F);
     }
