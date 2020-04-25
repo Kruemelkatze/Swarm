@@ -67,12 +67,12 @@ public class DepthController : MonoBehaviour
 
         if (depthTextField)
         {
-            depthTextField.text = $"{swarmDepthMeters:0.0}" + "m";
+            depthTextField.text = $"{swarmDepthMeters:0}" + "m";
         }
 
         if (maxDepthTextField)
         {
-            maxDepthTextField.text = $"max: {maxSwarmDepthMeters:0.0}" + "m";
+            maxDepthTextField.text = $"{maxSwarmDepthMeters:0}" + "m";
         }
     }
 
