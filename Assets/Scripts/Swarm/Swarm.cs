@@ -21,6 +21,8 @@ public class Swarm : MonoBehaviour
     //private TweenerCore<Quaternion, Quaternion, NoOptions> _rotationTweener;
     private TweenerCore<Quaternion, Vector3, QuaternionOptions> _rotationTweener;
 
+    private GameController gc;
+
     void Awake()
     {
         Hub.Register<Swarm>(this);
@@ -30,10 +32,17 @@ public class Swarm : MonoBehaviour
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        gc = Hub.Get<GameController>();
     }
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!gc.IsActive())
+        {
+            _rigidbody2D.velocity = Vector2.down * 0.01f;
+            return;
+        }
+        
         var x = Input.GetAxis("Horizontal");
         var y = Input.GetAxis("Vertical");
 

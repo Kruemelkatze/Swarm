@@ -50,9 +50,11 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e76765177d96f5d478a844c9bb626444, type: 2}
   musicClips:
     m_keys:
-    - standard
+    - placeholder
+    - backgroundv1
     m_values:
     - {fileID: 11400000, guid: d0d19d11a45206346b31603e93ae09ba, type: 2}
+    - {fileID: 11400000, guid: cd57ec95462d7904189b8cc8f89a307a, type: 2}
   musicVolume: 0.5
   soundVolume: 0.5
-  defaultMusic: standard
+  defaultMusic: backgroundv1

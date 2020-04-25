@@ -8,14 +8,20 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public Transform left;
-    public Transform right;
+    [SerializeField] [Range(0, 5)] private float startDelay = 2;
 
     [Header("Game States")] [SerializeField]
     private bool isPaused;
 
+    [SerializeField] private bool isStarted;
+    
     [Header("UI")] [SerializeField] private GameObject gameUi;
     [SerializeField] private GameObject pauseUi;
+
+    private void Awake()
+    {
+        Hub.Register(this);
+    }
 
     private void Start()
     {
@@ -25,7 +31,22 @@ public class GameController : MonoBehaviour
         }
 
         SetPause(false);
+        StartCoroutine(StartGameDelayed());
     }
+
+    private IEnumerator StartGameDelayed()
+    {
+        var spawner = Hub.Get<FishSpawner>();
+        spawner.Spawn(1);
+
+        yield return new WaitForSeconds(startDelay);
+        isStarted = true;
+
+        
+        yield return new WaitForSeconds(0.5f);
+        spawner.Spawn();
+    }
+    
 
     private void Update()
     {
@@ -44,6 +65,8 @@ public class GameController : MonoBehaviour
     public void PauseGame() => SetPause(true);
     public void ContinueGame() => SetPause(false);
 
+    public bool IsActive() => !isPaused && isStarted;
+    
     //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PRIVATE  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     private void SetPause(bool paused)
     {
@@ -78,21 +101,10 @@ public class GameControlTestEditor : Editor
         var gct = target as GameController;
 
         EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button("*click left*") && gct.left != null)
-        {
-            AudioController.Instance.PlaySound("click", gct.left);
-        }
-
         if (GUILayout.Button("*click*"))
         {
             AudioController.Instance.PlaySound("click");
         }
-
-        if (GUILayout.Button("*click right*") && gct.right != null)
-        {
-            AudioController.Instance.PlaySound("click", gct.right);
-        }
-
         EditorGUILayout.EndHorizontal();
 
         if (GUILayout.Button("Restart"))

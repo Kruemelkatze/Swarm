@@ -15,7 +15,7 @@ public class FishSpawner : MonoBehaviour
     [SerializeField] private Transform fishContainer;
     [SerializeField] private Transform spawnLocation;
     [SerializeField] private Transform fishesLookAt;
-    
+
     [SerializeField] private Color[] fishColors;
 
     [Header("Spawn Settings")] [SerializeField]
@@ -31,6 +31,11 @@ public class FishSpawner : MonoBehaviour
 
     [SerializeField] private List<Fish> fishes = new List<Fish>();
     [SerializeField] private List<Vector2> _spawnLocations = new List<Vector2>() {Vector2.up};
+
+    [Header("Growth")] [SerializeField] private bool exponentialGrowth;
+    [SerializeField] [Min(0)] private float growthTick = 1;
+    [SerializeField] [Min(0)] private float growthRate = 1;
+
 
     private void Awake()
     {
@@ -78,7 +83,7 @@ public class FishSpawner : MonoBehaviour
         maxFishSpawns = _spawnLocations.Count;
     }
 
-    private void Spawn(int? k = null)
+    public void Spawn(int? k = null)
     {
         var num = k ?? spawnCount;
 

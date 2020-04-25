@@ -2421,37 +2421,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5728245550169283007, guid: 84c5626d08ba20e4aa24daae5caf1271,
-        type: 3}
-      propertyPath: musicClips.m_keys.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5728245550169283007, guid: 84c5626d08ba20e4aa24daae5caf1271,
-        type: 3}
-      propertyPath: musicClips.m_values.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5728245550169283007, guid: 84c5626d08ba20e4aa24daae5caf1271,
-        type: 3}
-      propertyPath: musicClips.m_keys.Array.data[0]
-      value: placeholder
-      objectReference: {fileID: 0}
-    - target: {fileID: 5728245550169283007, guid: 84c5626d08ba20e4aa24daae5caf1271,
-        type: 3}
-      propertyPath: musicClips.m_keys.Array.data[1]
-      value: backgroundv1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5728245550169283007, guid: 84c5626d08ba20e4aa24daae5caf1271,
-        type: 3}
-      propertyPath: musicClips.m_values.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: cd57ec95462d7904189b8cc8f89a307a,
-        type: 2}
-    - target: {fileID: 5728245550169283007, guid: 84c5626d08ba20e4aa24daae5caf1271,
-        type: 3}
-      propertyPath: defaultMusic
-      value: backgroundv1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84c5626d08ba20e4aa24daae5caf1271, type: 3}
 --- !u!1001 &5798382270882838350

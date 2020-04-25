@@ -707,10 +707,35 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6329144306932545682, guid: 891c31f365dc8fa42b2d5591801277b3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: MainScene
+      objectReference: {fileID: 0}
     - target: {fileID: 6329144307618059470, guid: 891c31f365dc8fa42b2d5591801277b3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5798382270882838351}
+    - target: {fileID: 6329144307776927598, guid: 891c31f365dc8fa42b2d5591801277b3,
+        type: 3}
+      propertyPath: m_text
+      value: SWARM
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329144307776927598, guid: 891c31f365dc8fa42b2d5591801277b3,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329144307776927598, guid: 891c31f365dc8fa42b2d5591801277b3,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329144307776927598, guid: 891c31f365dc8fa42b2d5591801277b3,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 891c31f365dc8fa42b2d5591801277b3, type: 3}

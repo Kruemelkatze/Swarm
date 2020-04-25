@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.UIElements;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DepthAudioFilterController : MonoBehaviour
 {
@@ -25,8 +21,8 @@ public class DepthAudioFilterController : MonoBehaviour
 }
 
 #if  UNITY_EDITOR
-[CustomEditor(typeof(DepthAudioFilterController))]
-public class DepthAudioFilterControllerEditor : Editor
+[UnityEditor.CustomEditor(typeof(DepthAudioFilterController))]
+public class DepthAudioFilterControllerEditor : UnityEditor.Editor
 {
     private static readonly Rect Ranges = new Rect(0,0,1,22000);
     public override void OnInspectorGUI()
@@ -34,7 +30,7 @@ public class DepthAudioFilterControllerEditor : Editor
         DrawDefaultInspector();
 
         var t = target as DepthAudioFilterController;
-        t.lowPassCurve = EditorGUILayout.CurveField("Low Pass Curve 123", t.lowPassCurve, Color.green, Ranges);
+        t.lowPassCurve = UnityEditor.EditorGUILayout.CurveField("Low Pass Curve 123", t.lowPassCurve, Color.green, Ranges);
 
     }
 }
