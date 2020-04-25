@@ -7,12 +7,15 @@ public class Fish : MonoBehaviour
 {
 
     [SerializeField] private Transform targetTransform;
+    [SerializeField] private Transform lookAtTransform;
+    
     [SerializeField] private Vector3 relativeTargetPosition;
     [SerializeField] private float movementSpeed = 3;
     [SerializeField] private float rotationSpeed = 5;
 
     public int index;
-    
+
+    public bool isEnabled = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,18 +24,22 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // var diff = relativeTargetPosition - transform.localPosition;
-        // diff.Normalize();
-        // float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        // var targetRotation = Quaternion.Euler(0f, 0f, rotZ - 90);
+        if (!isEnabled)
+        {
+            return;
+        }
+        var diff = lookAtTransform.position - transform.position;
+        diff.Normalize();
+        float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        var targetRotation = Quaternion.Euler(0f, 0f, rotZ - 90);
+        
         var targetPosition = 
             targetTransform.position +
             targetTransform.rotation * relativeTargetPosition; 
-        //Vector3.Lerp(targetPosition, transform.position, movementSpeed * Time.deltaTime);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, TargetPosition.transform.rotation, rotationSpeed * Time.deltaTime);
+
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * movementSpeed);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetTransform.rotation, Time.deltaTime * 100);
-        
+        // transform.rotation = Quaternion.Lerp(transform.rotation, targetTransform.rotation, Time.deltaTime * 100);
+        transform.rotation = targetRotation;
     }
     
     public void SetColor(Color c)
@@ -46,10 +53,11 @@ public class Fish : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SetTargetPosition(Transform targetTransform, Vector3 relativeTargetPosition)
+    public void SetTarget(Transform targetTransform, Vector3 relativeTargetPosition, Transform lookAtTransform)
     {
         this.targetTransform = targetTransform;
         this.relativeTargetPosition = relativeTargetPosition;
+        this.lookAtTransform = lookAtTransform;
     }
 
     public void Eaten()

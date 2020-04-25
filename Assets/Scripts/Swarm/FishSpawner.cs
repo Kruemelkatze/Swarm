@@ -14,7 +14,7 @@ public class FishSpawner : MonoBehaviour
 
     [SerializeField] private Transform fishContainer;
     [SerializeField] private Transform spawnLocation;
-    
+
     [SerializeField] private Color[] fishColors;
 
     [Header("Spawn Settings")] [SerializeField]
@@ -91,16 +91,16 @@ public class FishSpawner : MonoBehaviour
             var fishScript = fish.GetComponent<Fish>();
 
             fish.transform.position = spawnLocation.position + (Vector3) _spawnLocations[index];
-            var diff = transform.position - fish.transform.position;
-            diff.Normalize();
-            float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-            fish.transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90);
-            
+            // var diff = transform.position - fish.transform.position;
+            // diff.Normalize();
+            // float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            // fish.transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90);
+
             var color = fishColors[Random.Range(0, fishColors.Length)];
             fishScript.index = index;
             fishScript.SetColor(color);
-            fishScript.SetTargetPosition(spawnLocation, _spawnLocations[index]);
-            
+            fishScript.SetTarget(spawnLocation, _spawnLocations[index], transform);
+
             fishes.Add(fishScript);
         }
     }
@@ -116,7 +116,7 @@ public class FishSpawner : MonoBehaviour
 
         Spawn(maxFishSpawns);
     }
-    
+
     public void RemoveFish(Fish fish)
     {
         fishes.Remove(fish);
@@ -147,12 +147,14 @@ public class FishSpawner : MonoBehaviour
             {
                 spawner.PrepareSpawnLocations();
             }
+
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("Spawn 1"))
             {
                 spawner.Spawn(1);
             }
+
             if (GUILayout.Button("Spawn K"))
             {
                 spawner.Spawn();
