@@ -16,8 +16,6 @@ public class FishSpawner : MonoBehaviour
     [SerializeField] private Transform spawnLocation;
     [SerializeField] private Transform fishesLookAt;
 
-    [Header("Split Settings")]
-    [SerializeField]
     
     [SerializeField] private Color[] fishColors;
 
