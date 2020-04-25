@@ -13,7 +13,6 @@ public class FishSpawner : MonoBehaviour
     private GameObject fishPrefab;
 
     [SerializeField] private Transform fishContainer;
-    [SerializeField] private Transform spawnLocation;
     [SerializeField] private Transform fishesLookAt;
 
     [SerializeField] private Color[] fishColors;
@@ -25,9 +24,18 @@ public class FishSpawner : MonoBehaviour
     [SerializeField] private Transform splitRightLocation;
     [SerializeField] private Transform splitRightLookAt;
 
+    [Header("Growth")] [SerializeField] private bool exponentialGrowth;
+    [SerializeField] [Min(0)] private float growthTick = 1;
+    [SerializeField] [Min(0)] private float growthRate = 1;
+    private float _localGrowthTick;
+
     [Header("Spawn Settings")] [SerializeField]
     private int spawnCount = 10;
-
+    [SerializeField] private Transform spawnLocation;
+    [SerializeField] private Transform spawnLocationOutsideLeft;
+    [SerializeField] private Transform spawnLocationOutsideRight;
+    [SerializeField] private float outsideSpawnYOffset = 4;
+    
     [SerializeField] private int maxFishSpawns;
 
     [SerializeField] private float spawnRadius = 2;
@@ -39,10 +47,8 @@ public class FishSpawner : MonoBehaviour
     [SerializeField] private List<Fish> fishes = new List<Fish>();
     [SerializeField] private List<Vector2> _spawnLocations = new List<Vector2>() {Vector2.up};
 
-    [Header("Growth")] [SerializeField] private bool exponentialGrowth;
-    [SerializeField] [Min(0)] private float growthTick = 1;
-    [SerializeField] [Min(0)] private float growthRate = 1;
 
+    private GameController gc;
     private void Awake()
     {
         Hub.Register<FishSpawner>(this);
@@ -72,6 +78,24 @@ public class FishSpawner : MonoBehaviour
     void Start()
     {
         PrepareSpawnLocations();
+        _localGrowthTick = growthTick;
+
+        gc = Hub.Get<GameController>();
+    }
+
+    private void Update()
+    {
+        if (!gc.IsActive())
+        {
+            return;
+        }
+
+        _localGrowthTick -= Time.deltaTime;
+        if (_localGrowthTick < 0)
+        {
+            _localGrowthTick = growthTick;
+            Spawn((int)growthRate, true);
+        }
     }
 
     private void PrepareSpawnLocations()
@@ -88,7 +112,7 @@ public class FishSpawner : MonoBehaviour
         maxFishSpawns = _spawnLocations.Count;
     }
 
-    public void Spawn(int? k = null)
+    public void Spawn(int? k = null, bool outside = false)
     {
         var num = k ?? spawnCount;
 
@@ -97,11 +121,26 @@ public class FishSpawner : MonoBehaviour
         for (int i = 0; i < maxNum; i++)
         {
             var index = fishIndex + i;
+            
             // Main Fish Spawn
+            var localPos = _spawnLocations[index];
+            var isLeftFish = localPos.x < 0;
+            
             var fish = Instantiate(fishPrefab, fishContainer);
             var fishScript = fish.GetComponent<Fish>();
 
-            fish.transform.position = spawnLocation.position + (Vector3) _spawnLocations[index];
+            Vector3 effectiveLocation;
+            if (outside)
+            {
+                effectiveLocation = isLeftFish ? spawnLocationOutsideLeft.position : spawnLocationOutsideRight.position;
+                effectiveLocation += Vector3.up * Random.Range(-outsideSpawnYOffset, outsideSpawnYOffset);
+            }
+            else
+            {
+                effectiveLocation = spawnLocation.position;
+            }
+            
+            fish.transform.position = effectiveLocation + (Vector3) _spawnLocations[index];
             // var diff = transform.position - fish.transform.position;
             // diff.Normalize();
             // float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
@@ -110,16 +149,15 @@ public class FishSpawner : MonoBehaviour
             var color = fishColors[Random.Range(0, fishColors.Length)];
             fishScript.index = index;
             fishScript.SetColor(color);
-            var localPos = _spawnLocations[index];
-            var isLeftFish = localPos.x < 0;
-            
+
+
             fishScript.SetTarget(
-                spawnLocation, 
-                fishesLookAt, 
+                spawnLocation,
+                fishesLookAt,
                 isLeftFish ? splitLeftLocation : splitRightLocation,
                 isLeftFish ? splitLeftLookAt : splitRightLookAt,
                 _spawnLocations[index]
-                );
+            );
 
             fishes.Add(fishScript);
         }
