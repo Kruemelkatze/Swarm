@@ -93,4 +93,6 @@ public class CameraMovement : MonoBehaviour
     }
 
     public float GetDepthPercentage() => depthPercentage;
+
+    public float GetVerticalSpeed() => verticalSpeed;
 }
