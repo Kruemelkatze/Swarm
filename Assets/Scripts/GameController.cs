@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Hellmade.Sound;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,8 +19,15 @@ public class GameController : MonoBehaviour
     
     [Header("UI")] [SerializeField] private GameObject gameUi;
     [SerializeField] private GameObject pauseUi;
-    
+
+    [SerializeField] private GameObject finishedUi;
+    [SerializeField] private TextMeshProUGUI fishText;
+
     private Audio _swarmLoopAudio;
+    private CameraMovement movement;
+
+    [SerializeField] private float waitAfterWin = 2;
+    
 
     private void Awake()
     {
@@ -38,6 +46,7 @@ public class GameController : MonoBehaviour
         
         SetPause(false);
         StartCoroutine(StartGameDelayed());
+        movement = Hub.Get<CameraMovement>();
     }
 
     private IEnumerator StartGameDelayed()
@@ -68,6 +77,42 @@ public class GameController : MonoBehaviour
         if (isPaused)
         {
             return;
+        }
+
+        if (movement.GetDepthPercentage() >= 1)
+        {
+            Finished();
+        }
+    }
+
+    public void Finished()
+    {
+        StartCoroutine(LevelFinished());
+    }
+
+    private IEnumerator LevelFinished()
+    {
+        var spawner = Hub.Get<FishSpawner>();
+        spawner.SpawnEnabled = false;
+        isStarted = false;
+        var fishCount = spawner.NumberOfFish;
+
+        AudioController.Instance.PlaySound("won");
+        yield return new WaitForSeconds(waitAfterWin);
+        
+        if (gameUi != null)
+        {
+            gameUi.SetActive(false);
+        }
+        
+        if (finishedUi != null)
+        {
+            finishedUi.SetActive(true);
+        }
+
+        if (fishText)
+        {
+            fishText.text = fishCount.ToString();
         }
     }
 
@@ -132,6 +177,10 @@ public class GameControlTestEditor : Editor
         if (GUILayout.Button("Restart"))
         {
             SceneController.Instance.RestartScene();
+        }
+        if (GUILayout.Button("Finished"))
+        {
+            gct.Finished();
         }
     }
 }

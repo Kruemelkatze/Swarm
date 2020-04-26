@@ -58,6 +58,7 @@ MonoBehaviour:
     - moraybite
     - jellyfish1
     - jellyfish2
+    - won
     m_values:
     - {fileID: 11400000, guid: e76765177d96f5d478a844c9bb626444, type: 2}
     - {fileID: 11400000, guid: 79995f4234c7e2046b92bfd30b202838, type: 2}
@@ -72,6 +73,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 551522b42182dc74d95985261f69cc2f, type: 2}
     - {fileID: 11400000, guid: 6e60d01053f33aa448e3086f8c78e2d7, type: 2}
     - {fileID: 11400000, guid: 2cbe8bd2a466c48409c88945d7410f85, type: 2}
+    - {fileID: 11400000, guid: 9d473f6c668862848bce219c6c9d0811, type: 2}
   musicClips:
     m_keys:
     - placeholder

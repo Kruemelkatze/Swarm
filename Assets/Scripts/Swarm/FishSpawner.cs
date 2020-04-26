@@ -47,6 +47,7 @@ public class FishSpawner : MonoBehaviour
     [SerializeField] private List<Fish> fishes = new List<Fish>();
     [SerializeField] private List<Vector2> _spawnLocations = new List<Vector2>() {Vector2.up};
 
+    public bool SpawnEnabled = true;
 
     private GameController gc;
     private void Awake()
@@ -94,9 +95,14 @@ public class FishSpawner : MonoBehaviour
         if (_localGrowthTick < 0)
         {
             _localGrowthTick = growthTick;
-            Spawn((int)growthRate, true);
+            if (SpawnEnabled)
+            {
+                Spawn((int)growthRate, true);
+            }
         }
     }
+
+    public int NumberOfFish => fishes.Count;
 
     public int SpawnCount => spawnCount;
 
