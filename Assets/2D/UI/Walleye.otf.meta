@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 037c5a64d1e0d664ba5f3f529d02487c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Walleye
+  fontNames:
+  - Walleye
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c1367df1eeb87484aad56ef07162706d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
