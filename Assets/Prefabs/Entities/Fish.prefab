@@ -46,11 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 0}
+  lookAtTransform: {fileID: 0}
+  splitTargetTransform: {fileID: 0}
+  splitLookAtTransform: {fileID: 0}
   relativeTargetPosition: {x: 0, y: 0, z: 0}
   movementSpeed: 3
   rotationSpeed: 5
+  speedVariation: 1
   index: 0
-  isEnabled: 1
 --- !u!212 &4724859766437018759
 SpriteRenderer:
   m_ObjectHideFlags: 0
