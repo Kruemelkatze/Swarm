@@ -15,7 +15,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: c51f4dddf4d9cb34bbad994d9b508138, type: 3}
   uiSound: 0
   loop: 0
-  volume: 0.25
+  volume: 0.12
   pitch: 1
   volumeVariation: 0
   pitchVariation: 0

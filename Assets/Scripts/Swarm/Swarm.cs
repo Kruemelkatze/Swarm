@@ -44,6 +44,11 @@ public class Swarm : MonoBehaviour
         {
             _rigidbody2D.velocity = Vector2.down * 0.01f;
             return;
+        } else if (gc.isFinished)
+        {
+            transform.Rotate(0,0, idleAngularSpeed * Time.deltaTime);
+            _effectiveStretchFactor = Vector3.one;
+            return;
         }
 
         if ((Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space)) && !isSplit)

@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 2023260555, guid: 6b7ebfee7c989624182e160e9c7a6aa6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 48e7b8e67af31ed42bb8efb6d679e418, type: 2}
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 482802803822821540, guid: 6b7ebfee7c989624182e160e9c7a6aa6,
         type: 3}
       propertyPath: biteAudioName

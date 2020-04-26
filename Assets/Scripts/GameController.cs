@@ -27,7 +27,8 @@ public class GameController : MonoBehaviour
     private CameraMovement movement;
 
     [SerializeField] private float waitAfterWin = 2;
-    
+
+    public bool isFinished = false;
 
     private void Awake()
     {
@@ -92,27 +93,32 @@ public class GameController : MonoBehaviour
 
     private IEnumerator LevelFinished()
     {
-        var spawner = Hub.Get<FishSpawner>();
-        spawner.SpawnEnabled = false;
-        isStarted = false;
-        var fishCount = spawner.NumberOfFish;
+        if (!isFinished)
+        {
+            isFinished = true;
 
-        AudioController.Instance.PlaySound("won");
-        yield return new WaitForSeconds(waitAfterWin);
-        
-        if (gameUi != null)
-        {
-            gameUi.SetActive(false);
-        }
-        
-        if (finishedUi != null)
-        {
-            finishedUi.SetActive(true);
-        }
+            var spawner = Hub.Get<FishSpawner>();
+            spawner.SpawnEnabled = false;
+            isStarted = false;
+            var fishCount = spawner.NumberOfFish;
 
-        if (fishText)
-        {
-            fishText.text = fishCount.ToString();
+            AudioController.Instance.PlaySound("won");
+            yield return new WaitForSeconds(waitAfterWin);
+
+            if (gameUi != null)
+            {
+                gameUi.SetActive(false);
+            }
+
+            if (finishedUi != null)
+            {
+                finishedUi.SetActive(true);
+            }
+
+            if (fishText)
+            {
+                fishText.text = fishCount.ToString();
+            }
         }
     }
 
