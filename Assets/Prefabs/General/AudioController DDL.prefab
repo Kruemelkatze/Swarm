@@ -45,11 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundClips:
     m_keys:
-    - click
+    - clickold
     - ambience
     - swarmloop
     - splash
-    - ping
+    - click
     - split
     - unite
     - sharkattack

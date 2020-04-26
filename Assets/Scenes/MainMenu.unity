@@ -707,10 +707,45 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6329144306361556413, guid: 891c31f365dc8fa42b2d5591801277b3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySoundFromUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329144306801287620, guid: 891c31f365dc8fa42b2d5591801277b3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySoundFromUI
+      objectReference: {fileID: 0}
     - target: {fileID: 6329144306932545682, guid: 891c31f365dc8fa42b2d5591801277b3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: MainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329144306932545682, guid: 891c31f365dc8fa42b2d5591801277b3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySoundFromUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329144306962415239, guid: 891c31f365dc8fa42b2d5591801277b3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySoundFromUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329144306966355984, guid: 891c31f365dc8fa42b2d5591801277b3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySoundFromUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329144307416030687, guid: 891c31f365dc8fa42b2d5591801277b3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySoundFromUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329144307584016377, guid: 891c31f365dc8fa42b2d5591801277b3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySoundFromUI
       objectReference: {fileID: 0}
     - target: {fileID: 6329144307618059470, guid: 891c31f365dc8fa42b2d5591801277b3,
         type: 3}

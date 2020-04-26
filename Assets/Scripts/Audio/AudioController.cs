@@ -88,6 +88,11 @@ public class AudioController : PersistentSingleton<AudioController>
         return PlaySound(key, null, null, null, null, null, null);
     }
 
+    public void PlaySoundFromUI(string key)
+    {
+        PlaySound(key);
+    }
+
     public int PlaySoundClip(AudioClip clip)
     {
         return PlaySound(clip, EazySoundManager.GlobalSoundsVolume);
