@@ -87,6 +87,16 @@ public class DepthController : MonoBehaviour
     {
         return unitDepth * unitToMeterRatio;
     }
+    
+    public float MeterDepthToUnitDepth(float meterDepth)
+    {
+        return unitToMeterRatio > 0 ? meterDepth / unitToMeterRatio : 0;
+    }
+
+    public float GetAbsoluteDepth(float unitDepth)
+    {
+        return zeroDepthDepth + unitDepth;
+    }
 
     public float GetDepthOfElement(Vector2 t)
     {

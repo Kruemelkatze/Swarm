@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -12,9 +11,12 @@ public class EnemyMovement : MonoBehaviour
     private float verticalSpeed = 1f;
     private bool started = false;
 
+    private DepthController dc;
+
     // Start is called before the first frame update
     void Start()
     {
+        dc = Hub.Get<DepthController>();
         movementSpeed = movementSpeed + Random.Range(-speedVariation, speedVariation);
         
         transform.rotation = Quaternion.Euler(0f, 0f, degreeStart);
@@ -28,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var currentSwarmDepth = Hub.Get<DepthController>().GetSwarmDepthMeters();
+        var currentSwarmDepth = dc.GetSwarmDepthMeters();
 
         if (!started && currentSwarmDepth < triggerAtDepth)
         {
