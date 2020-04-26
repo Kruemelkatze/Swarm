@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2e8d52098088b4d940bcb2514658b7, type: 3}
   m_Name: BackgroundV1
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: fe77fbc6a57079d4498422d821367809, type: 3}
+  audioClip: {fileID: 8300000, guid: be3c3866afe1a374889263580edae9e7, type: 3}
   uiSound: 0
-  loop: 0
+  loop: 1
   volume: 0.2
   pitch: 1
   volumeVariation: 0

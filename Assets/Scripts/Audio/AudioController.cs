@@ -64,34 +64,39 @@ public class AudioController : PersistentSingleton<AudioController>
     public float GetMusicVolume() => musicVolume;
     public float GetSoundVolume() => soundVolume;
 
+    public void StopAllSounds()
+    {
+        EazySoundManager.StopAllSounds();
+    }
+    
     //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Simple functions  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     #region
 
-    public void PlayMusic(string key)
+    public int PlayMusic(string key)
     {
-        PlayMusic(key, null, null, null);
+        return PlayMusic(key, null, null, null);
     }
 
-    public void PlaySound(string key, Transform t = null)
+    public int PlaySound(string key, Transform t = null)
     {
-        PlaySound(key, null, null, null, null, null, t);
+        return PlaySound(key, null, null, null, null, null, t);
     }
     
-    public void PlaySound(string key)
+    public int PlaySound(string key)
     {
-        PlaySound(key, null, null, null, null, null, null);
+        return PlaySound(key, null, null, null, null, null, null);
     }
 
-    public void PlaySoundClip(AudioClip clip)
+    public int PlaySoundClip(AudioClip clip)
     {
-        PlaySound(clip, EazySoundManager.GlobalSoundsVolume);
+        return PlaySound(clip, EazySoundManager.GlobalSoundsVolume);
     }
 
     // Default theme helper
-    public void PlayDefaultMusic(float? volume = null, bool? loop = null, float? pitch = null)
+    public int PlayDefaultMusic(float? volume = null, bool? loop = null, float? pitch = null)
     {
-        PlayMusic(defaultMusic, volume, loop, pitch);
+        return PlayMusic(defaultMusic, volume, loop, pitch);
     }
     
     #endregion

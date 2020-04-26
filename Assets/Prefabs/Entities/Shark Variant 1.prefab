@@ -8,14 +8,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2023260555, guid: 6b7ebfee7c989624182e160e9c7a6aa6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 48e7b8e67af31ed42bb8efb6d679e418, type: 2}
-    - target: {fileID: 2023260555, guid: 6b7ebfee7c989624182e160e9c7a6aa6, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 656f05003552ac94b8added1819f90de,
         type: 3}
+    - target: {fileID: 2023260555, guid: 6b7ebfee7c989624182e160e9c7a6aa6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 48e7b8e67af31ed42bb8efb6d679e418, type: 2}
+    - target: {fileID: 482802803822821540, guid: 6b7ebfee7c989624182e160e9c7a6aa6,
+        type: 3}
+      propertyPath: biteAudioName
+      value: sharkbite
+      objectReference: {fileID: 0}
     - target: {fileID: 482802803822821543, guid: 6b7ebfee7c989624182e160e9c7a6aa6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -89,7 +94,12 @@ PrefabInstance:
     - target: {fileID: 482802803822821545, guid: 6b7ebfee7c989624182e160e9c7a6aa6,
         type: 3}
       propertyPath: m_Name
-      value: Shark
+      value: Shark Variant 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 482802803822821547, guid: 6b7ebfee7c989624182e160e9c7a6aa6,
+        type: 3}
+      propertyPath: warningAudioName
+      value: sharkattack
       objectReference: {fileID: 0}
     - target: {fileID: 6115044289660183515, guid: 6b7ebfee7c989624182e160e9c7a6aa6,
         type: 3}

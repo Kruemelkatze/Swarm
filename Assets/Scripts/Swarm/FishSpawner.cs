@@ -98,6 +98,8 @@ public class FishSpawner : MonoBehaviour
         }
     }
 
+    public int SpawnCount => spawnCount;
+
     private void PrepareSpawnLocations()
     {
         var sampler = new PoissonDiscSampler(2 * spawnRadius, 2 * spawnRadius, fishRadius);

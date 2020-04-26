@@ -104,10 +104,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1716838008385731072, guid: 0293bf4d789179141976f5549acc2aed,
+        type: 3}
+      propertyPath: warningAudioName
+      value: morayattack
+      objectReference: {fileID: 0}
     - target: {fileID: 1716838008385731074, guid: 0293bf4d789179141976f5549acc2aed,
         type: 3}
       propertyPath: m_Name
-      value: Moray
+      value: Moray Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1716838008385731084, guid: 0293bf4d789179141976f5549acc2aed,
         type: 3}
@@ -209,6 +214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716838008385731087, guid: 0293bf4d789179141976f5549acc2aed,
+        type: 3}
+      propertyPath: biteAudioName
+      value: moraybite
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1716838008385731085, guid: 0293bf4d789179141976f5549acc2aed, type: 3}

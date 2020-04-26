@@ -63,8 +63,10 @@ public class Swarm : MonoBehaviour
         {
             _rotationTweener.Kill();
         }
-        
-        if (new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).sqrMagnitude > 0.1f)
+
+        var magnitude = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).magnitude;
+        gc.SetMovementAudio(magnitude);
+        if (magnitude > 0.1f)
         {
             float angle = Mathf.Atan2(movementDirection.y, movementDirection.x) * Mathf.Rad2Deg - 90f;
             var rot = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -97,9 +99,11 @@ public class Swarm : MonoBehaviour
     {
         Debug.Log("Split");
         isSplit = true;
+        AudioController.Instance.PlaySound("split");
         //Volume Stuff
         yield return new WaitForSeconds(splitDuration);
         isSplit = false;
+        AudioController.Instance.PlaySound("unite");
         Debug.Log("Unite");
     }
 

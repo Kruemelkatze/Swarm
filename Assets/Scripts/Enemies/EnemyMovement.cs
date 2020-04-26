@@ -13,6 +13,8 @@ public class EnemyMovement : MonoBehaviour
 
     private DepthController dc;
 
+    [SerializeField] private string warningAudioName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,8 +39,13 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
+        if (!started)
+        {
+            AudioController.Instance.PlaySound(warningAudioName);
+        }
+        
         started = true;
-
+        
         var pos = transform.position;
 
         // Movement on cos curve?

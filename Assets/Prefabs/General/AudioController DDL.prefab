@@ -46,8 +46,32 @@ MonoBehaviour:
   soundClips:
     m_keys:
     - click
+    - ambience
+    - swarmloop
+    - splash
+    - ping
+    - split
+    - unite
+    - sharkattack
+    - sharkbite
+    - morayattack
+    - moraybite
+    - jellyfish1
+    - jellyfish2
     m_values:
     - {fileID: 11400000, guid: e76765177d96f5d478a844c9bb626444, type: 2}
+    - {fileID: 11400000, guid: 79995f4234c7e2046b92bfd30b202838, type: 2}
+    - {fileID: 11400000, guid: 8f19e16b6753ea44c80e5a5607ca0626, type: 2}
+    - {fileID: 11400000, guid: 4c5d3c2c05dada343b3e28ac7af97374, type: 2}
+    - {fileID: 11400000, guid: b9f0a1027a1062340acbc168e77d2ef2, type: 2}
+    - {fileID: 11400000, guid: 93a926ef9949eff4ebee28ca803f6d5d, type: 2}
+    - {fileID: 11400000, guid: 59341c26ca6f648408defa4dbb08c6d1, type: 2}
+    - {fileID: 11400000, guid: e2f794e3c16484445b05d2b14fe86624, type: 2}
+    - {fileID: 11400000, guid: e80b86c1dc374ba49974004bbad0face, type: 2}
+    - {fileID: 11400000, guid: 94901048c09b9b24ea1838c7017ef4a7, type: 2}
+    - {fileID: 11400000, guid: 551522b42182dc74d95985261f69cc2f, type: 2}
+    - {fileID: 11400000, guid: 6e60d01053f33aa448e3086f8c78e2d7, type: 2}
+    - {fileID: 11400000, guid: 2cbe8bd2a466c48409c88945d7410f85, type: 2}
   musicClips:
     m_keys:
     - placeholder

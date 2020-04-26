@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Hellmade.Sound;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,8 @@ public class GameController : MonoBehaviour
     
     [Header("UI")] [SerializeField] private GameObject gameUi;
     [SerializeField] private GameObject pauseUi;
+    
+    private Audio _swarmLoopAudio;
 
     private void Awake()
     {
@@ -30,6 +33,9 @@ public class GameController : MonoBehaviour
             AudioController.Instance.PlayDefaultMusic();
         }
 
+        AudioController.Instance.StopAllSounds();
+        AudioController.Instance.PlaySound("ambience");
+        
         SetPause(false);
         StartCoroutine(StartGameDelayed());
     }
@@ -37,14 +43,18 @@ public class GameController : MonoBehaviour
     private IEnumerator StartGameDelayed()
     {
         var spawner = Hub.Get<FishSpawner>();
-        spawner.Spawn(1);
+        //spawner.Spawn(1);
 
         yield return new WaitForSeconds(startDelay);
         isStarted = true;
 
         
         yield return new WaitForSeconds(0.5f);
-        spawner.Spawn();
+        spawner.Spawn(spawner.SpawnCount, true);
+        AudioController.Instance.PlaySound("splash");
+        
+        var audioId = AudioController.Instance.PlaySound("swarmloop");
+        _swarmLoopAudio = EazySoundManager.GetSoundAudio(audioId);
     }
     
 
@@ -66,6 +76,18 @@ public class GameController : MonoBehaviour
     public void ContinueGame() => SetPause(false);
 
     public bool IsActive() => !isPaused && isStarted;
+
+    public void SetMovementAudio(float magnitude)
+    {
+        if (_swarmLoopAudio == null)
+        {
+            return;
+        }
+
+        magnitude = magnitude * 0.4f + 0.3f;
+        
+        _swarmLoopAudio.SetVolume(magnitude, 0.15f);
+    }
     
     //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PRIVATE  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     private void SetPause(bool paused)

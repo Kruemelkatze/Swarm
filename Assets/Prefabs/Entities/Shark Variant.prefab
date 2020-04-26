@@ -109,6 +109,11 @@ PrefabInstance:
       propertyPath: triggerAtDepth
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1716838008385731072, guid: 0293bf4d789179141976f5549acc2aed,
+        type: 3}
+      propertyPath: warningAudioName
+      value: sharkattack
+      objectReference: {fileID: 0}
     - target: {fileID: 1716838008385731074, guid: 0293bf4d789179141976f5549acc2aed,
         type: 3}
       propertyPath: m_Name
@@ -249,6 +254,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716838008385731087, guid: 0293bf4d789179141976f5549acc2aed,
+        type: 3}
+      propertyPath: biteAudioName
+      value: sharkbite
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1716838008385731085, guid: 0293bf4d789179141976f5549acc2aed, type: 3}
