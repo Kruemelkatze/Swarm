@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] [Range(5, 100)] private int triggerAtDepth = 5;
+    [SerializeField] [Range(0, 100)] private int triggerAtDepth = 0;
     [SerializeField] [Range(-180, 180)] private float degreeStart = 0;
     [SerializeField] [Min(0)] private float speedVariation = 1;
     [SerializeField] private float movementSpeed = 3;
