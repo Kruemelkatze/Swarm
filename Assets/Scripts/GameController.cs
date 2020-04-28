@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private float waitAfterWin = 2;
 
     public bool isFinished = false;
-
+    private bool hasTriggeredFinished = false;
     private void Awake()
     {
         Hub.Register(this);
@@ -48,6 +48,10 @@ public class GameController : MonoBehaviour
         SetPause(false);
         StartCoroutine(StartGameDelayed());
         movement = Hub.Get<CameraMovement>();
+
+        isFinished = false;
+        hasTriggeredFinished = false;
+        SetPause(false);
     }
 
     private IEnumerator StartGameDelayed()
@@ -84,7 +88,7 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        if (movement.GetDepthPercentage() >= 1)
+        if (!hasTriggeredFinished && movement.GetDepthPercentage() >= 1)
         {
             Finished();
         }
@@ -92,22 +96,24 @@ public class GameController : MonoBehaviour
 
     public void Finished()
     {
+        hasTriggeredFinished = true;
         StartCoroutine(LevelFinished());
     }
 
     private IEnumerator LevelFinished()
     {
-        if (!isFinished)
+        if (!isFinished && !hasTriggeredFinished)
         {
-            isFinished = true;
-
             var spawner = Hub.Get<FishSpawner>();
             spawner.SpawnEnabled = false;
-            isStarted = false;
-            var fishCount = spawner.NumberOfFish;
-
             AudioController.Instance.PlaySound("won");
+
             yield return new WaitForSeconds(waitAfterWin);
+
+            isFinished = true;
+            isStarted = false;
+            
+            var fishCount = spawner.NumberOfFish;
 
             if (gameUi != null)
             {
