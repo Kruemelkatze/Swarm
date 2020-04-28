@@ -52,6 +52,8 @@ public class GameController : MonoBehaviour
 
     private IEnumerator StartGameDelayed()
     {
+        var dc = Hub.Get<DepthController>();
+        dc.SetVisibilityOfUIFields(false);
         var spawner = Hub.Get<FishSpawner>();
         //spawner.Spawn(1);
 
@@ -63,6 +65,8 @@ public class GameController : MonoBehaviour
         spawner.Spawn(spawner.SpawnCount, true);
         AudioController.Instance.PlaySound("splash");
         
+        dc.SetVisibilityOfUIFields(true);
+
         var audioId = AudioController.Instance.PlaySound("swarmloop");
         _swarmLoopAudio = EazySoundManager.GetSoundAudio(audioId);
     }

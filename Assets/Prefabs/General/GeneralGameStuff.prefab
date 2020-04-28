@@ -48,6 +48,10 @@ MonoBehaviour:
   isStarted: 0
   gameUi: {fileID: 0}
   pauseUi: {fileID: 0}
+  finishedUi: {fileID: 0}
+  fishText: {fileID: 0}
+  waitAfterWin: 2
+  isFinished: 0
 --- !u!1 &5457373150881229641
 GameObject:
   m_ObjectHideFlags: 0

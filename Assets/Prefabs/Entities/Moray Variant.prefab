@@ -97,6 +97,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.42}
   m_Size: {x: 0.2, y: 0.3}
   m_Direction: 0
+--- !u!114 &4591430640773357625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482802803822821545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 869b39d332c2ac74fbf081c407b7e52f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1252050746079476395
 PrefabInstance:
   m_ObjectHideFlags: 0

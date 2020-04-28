@@ -32,6 +32,10 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!dc)
+        {
+            return;
+        }
         var currentSwarmDepth = dc.GetSwarmDepthMeters();
 
         if (!started && currentSwarmDepth < triggerAtDepth)

@@ -77,6 +77,12 @@ public class DepthController : MonoBehaviour
     }
 
     //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Public  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    public void SetVisibilityOfUIFields(bool depthActive, bool maxDepthActive = false)
+    {
+        depthTextField.gameObject.SetActive(depthActive);
+        maxDepthTextField.gameObject.SetActive(maxDepthActive);
+    }
+    
     public float GetDepthOfElement(Transform t)
     {
         var d = t.position.y - zeroDepthDepth;

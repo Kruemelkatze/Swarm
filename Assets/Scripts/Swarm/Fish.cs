@@ -27,8 +27,6 @@ public class Fish : MonoBehaviour
     {
         movementSpeed = movementSpeed + Random.Range(-speedVariation, speedVariation);
         _swarm = Hub.Get<Swarm>();
-        
-        GetComponent<Renderer>().material.SetFloat("Random", Random.value);
     }
 
     // Update is called once per frame
