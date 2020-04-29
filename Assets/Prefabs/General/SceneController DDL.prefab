@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.019607844, g: 0.047058824, b: 0.12156863, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 2729445880432067857}
-  fadeImageColor: {r: 1, g: 0, b: 0.21318102, a: 1}
+  fadeImageColor: {r: 1, g: 1, b: 1, a: 1}
   fadeOutTimeDefault: 0.3
   fadeOutCurve:
     serializedVersion: 2

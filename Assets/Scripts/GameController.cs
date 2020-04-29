@@ -45,13 +45,12 @@ public class GameController : MonoBehaviour
         AudioController.Instance.StopAllSounds();
         AudioController.Instance.PlaySound("ambience");
         
-        SetPause(false);
         StartCoroutine(StartGameDelayed());
         movement = Hub.Get<CameraMovement>();
 
         isFinished = false;
         hasTriggeredFinished = false;
-        SetPause(false);
+        SetPause(false, false);
     }
 
     private IEnumerator StartGameDelayed()
@@ -151,9 +150,20 @@ public class GameController : MonoBehaviour
     }
     
     //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PRIVATE  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     private void SetPause(bool paused)
     {
+        SetPause(paused, true);
+    }
+    
+    private void SetPause(bool paused, bool playSound)
+    {
         isPaused = paused;
+
+        if (playSound)
+        {
+            AudioController.Instance.PlaySound("click");
+        }
 
         if (gameUi != null)
         {

@@ -1081,6 +1081,10 @@ MonoBehaviour:
   - {fileID: 6329144306203000329}
   confirmCloseUiElement: {fileID: 6329144306203000329}
   backDropImage: {fileID: 6329144307031828168}
+  showWithAnyOpenMenu: []
+  showWithoutAnyOpenMenu: []
+  creditFields: []
+  randomizeCreditFields: 1
 --- !u!1 &6329144306203000330
 GameObject:
   m_ObjectHideFlags: 0
