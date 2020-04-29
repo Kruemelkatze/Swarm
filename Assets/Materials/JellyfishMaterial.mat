@@ -37,10 +37,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Boolean_26284CC7: 0
+    - Boolean_26284CC7: 1
     - Boolean_94EE7891: 0
-    - Boolean_C7AAB697: 0
-    - Boolean_FD052EA9: 1
+    - Boolean_C7AAB697: 1
+    - Boolean_FD052EA9: 0
     - Random: 0
     - UseFixedOrigin: 0
     - Vector1_149BF680: 1
@@ -49,7 +49,8 @@ Material:
     - Vector1_32B8183B: 1
     - Vector1_407C22B6: 2
     - Vector1_54F0930E: 3
-    - Vector1_8ED6B24A: 1
+    - Vector1_866252C: 0
+    - Vector1_8ED6B24A: 3
     - Vector1_CBCF5511: 0.08
     - _EnableExternalAlpha: 0
     m_Colors:

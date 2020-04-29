@@ -101,7 +101,7 @@ public class GameController : MonoBehaviour
 
     private IEnumerator LevelFinished()
     {
-        if (!isFinished && !hasTriggeredFinished)
+        if (!isFinished)
         {
             var spawner = Hub.Get<FishSpawner>();
             spawner.SpawnEnabled = false;

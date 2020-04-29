@@ -8,6 +8,10 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] [Min(0)] private float speedVariation = 1;
     [SerializeField] private float movementSpeed = 3;
 
+    [Tooltip("If enemies were defined in world coordinates, use this as offset")]
+    [SerializeField] private Transform zeroDepthOffsetElement;
+    
+    
     private float verticalSpeed = 1f;
     private bool started = false;
 
@@ -26,6 +30,11 @@ public class EnemyMovement : MonoBehaviour
         var verticalCameraSpeed = Hub.Get<CameraMovement>().GetVerticalSpeed();
 
         verticalSpeed = -1 * (verticalCameraSpeed / movementSpeed);
+
+        if (zeroDepthOffsetElement)
+        {
+            triggerAtDepth += (int) zeroDepthOffsetElement.position.y;
+        }
 
     }
 
