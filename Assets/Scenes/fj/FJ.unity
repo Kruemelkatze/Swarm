@@ -1473,6 +1473,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02b631b8d92708458cbacb7e3c8e358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1966127663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1966127664}
+  m_Layer: 0
+  m_Name: Friendlies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1966127664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966127663}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.0660825, y: -75.97575, z: -23.47461}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2052002019 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6292349263644162523, guid: efef0a368ec4a5045b39ae45e86c3c2f,
@@ -1890,6 +1920,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 39923269127158715, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3847441766768979610, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1949,6 +1984,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208795886660241801, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c164616050cbba4d9d1ff5fa2b9be38, type: 3}
