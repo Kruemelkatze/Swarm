@@ -360,7 +360,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2061289884}
-        m_MethodName: EnableChildMenu
+        m_MethodName: EnableUiElement
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2057800910}
@@ -2363,10 +2363,10 @@ RectTransform:
   m_Father: {fileID: 2057800910}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 1600, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &622629904
 MonoBehaviour:
@@ -2412,11 +2412,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2061289884}
-        m_MethodName: DisableChildMenus
-        m_Mode: 1
+        m_MethodName: DisableUiElement
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2057800910}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2435,7 +2435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.019607844, g: 0.047058824, b: 0.12156863, a: 0}
+  m_Color: {r: 0.019607844, g: 0.047058824, b: 0.12156863, a: 0.9098039}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

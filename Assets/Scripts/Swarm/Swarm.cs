@@ -46,6 +46,7 @@ public class Swarm : MonoBehaviour
         {
             transform.Rotate(0, 0, idleAngularSpeed * Time.deltaTime);
             _effectiveStretchFactor = Vector3.one;
+            _rigidbody2D.velocity = Vector2.zero;
             return;
         }
         else if (!gc.IsActive())
