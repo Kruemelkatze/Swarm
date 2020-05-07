@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: m_SpriteSortPoint
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2023260555, guid: 6b7ebfee7c989624182e160e9c7a6aa6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 482802803822821540, guid: 6b7ebfee7c989624182e160e9c7a6aa6,
         type: 3}
       propertyPath: biteAudioName
