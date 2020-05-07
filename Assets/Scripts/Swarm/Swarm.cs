@@ -13,14 +13,15 @@ public class Swarm : MonoBehaviour
     [SerializeField] [Range(1, 4)] private int controlSharpness = 1;
     [SerializeField] [Min(0)] private float idleAngularSpeed;
     [SerializeField] private Vector3 stretchFactor = new Vector3(0.8f, 1.1f, 1);
-    [SerializeField] private Vector3 stretchOffset = new Vector3(1,1,0);
+    [SerializeField] private Vector3 stretchOffset = new Vector3(1, 1, 0);
 
     [SerializeField] private bool isSplit;
     [SerializeField] [Range(0, 5)] private float splitDuration = 1.5f;
-    
+
     private Vector3 _effectiveStretchFactor = Vector3.one;
-    
+
     private Rigidbody2D _rigidbody2D;
+
     //private TweenerCore<Quaternion, Quaternion, NoOptions> _rotationTweener;
     private TweenerCore<Quaternion, Vector3, QuaternionOptions> _rotationTweener;
 
@@ -37,17 +38,19 @@ public class Swarm : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         gc = Hub.Get<GameController>();
     }
+
     // Update is called once per frame
     void Update()
     {
-        if (!gc.IsActive())
+        if (gc.isFinished)
+        {
+            transform.Rotate(0, 0, idleAngularSpeed * Time.deltaTime);
+            _effectiveStretchFactor = Vector3.one;
+            return;
+        }
+        else if (!gc.IsActive())
         {
             _rigidbody2D.velocity = Vector2.down * 0.01f;
-            return;
-        } else if (gc.isFinished)
-        {
-            transform.Rotate(0,0, idleAngularSpeed * Time.deltaTime);
-            _effectiveStretchFactor = Vector3.one;
             return;
         }
 
@@ -55,7 +58,7 @@ public class Swarm : MonoBehaviour
         {
             StartCoroutine(Split());
         }
-        
+
         var x = Input.GetAxis("Horizontal");
         var y = Input.GetAxis("Vertical");
 
@@ -63,8 +66,8 @@ public class Swarm : MonoBehaviour
             Mathf.Abs(Mathf.Pow(x, controlSharpness)) * Mathf.Sign(x),
             Mathf.Abs(Mathf.Pow(y, controlSharpness)) * Mathf.Sign(y)), 1);
         _rigidbody2D.velocity = movementDirection * speed;
-        
-        if(_rotationTweener != null && _rotationTweener.IsActive())
+
+        if (_rotationTweener != null && _rotationTweener.IsActive())
         {
             _rotationTweener.Kill();
         }
@@ -95,7 +98,10 @@ public class Swarm : MonoBehaviour
         else
         {
             // Idle
-            transform.Rotate(0,0, idleAngularSpeed * Time.deltaTime);
+            if (!isSplit)
+            {
+                transform.Rotate(0, 0, idleAngularSpeed * Time.deltaTime);
+            }
             _effectiveStretchFactor = Vector3.one;
         }
     }
@@ -115,5 +121,4 @@ public class Swarm : MonoBehaviour
     public bool IsSplit => isSplit;
     public Vector3 GetStretchFactor() => _effectiveStretchFactor;
     public Vector3 GetStretchOffset() => stretchOffset;
-
-}   
+}

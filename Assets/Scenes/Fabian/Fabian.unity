@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -656,16 +656,6 @@ PrefabInstance:
       propertyPath: zeroDepthOffsetElement
       value: 
       objectReference: {fileID: 831628974}
-    - target: {fileID: 39923268705817458, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 39923268705817458, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -88.86
-      objectReference: {fileID: 0}
     - target: {fileID: 39923268705817470, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
         type: 3}
       propertyPath: zeroDepthOffsetElement
@@ -681,11 +671,6 @@ PrefabInstance:
       propertyPath: zeroDepthOffsetElement
       value: 
       objectReference: {fileID: 831628974}
-    - target: {fileID: 39923269127158711, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: triggerAtDepth
-      value: 59
-      objectReference: {fileID: 0}
     - target: {fileID: 39923269134540608, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
         type: 3}
       propertyPath: zeroDepthOffsetElement
@@ -696,11 +681,6 @@ PrefabInstance:
       propertyPath: zeroDepthOffsetElement
       value: 
       objectReference: {fileID: 831628974}
-    - target: {fileID: 39923269143853833, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 170
-      objectReference: {fileID: 0}
     - target: {fileID: 39923269165418976, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
         type: 3}
       propertyPath: zeroDepthOffsetElement
@@ -726,86 +706,6 @@ PrefabInstance:
       propertyPath: zeroDepthOffsetElement
       value: 
       objectReference: {fileID: 831628974}
-    - target: {fileID: 3745470801809788377, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470801809788377, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470801847298307, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_PointLightOuterRadius
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470801847298307, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 2.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470801847298308, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470801847298308, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470802616651624, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470802616651624, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470802726260902, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: availableColors.Array.data[0].r
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470802726260902, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: availableColors.Array.data[0].g
-      value: 0.34509805
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470802726260902, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: availableColors.Array.data[1].r
-      value: 0.27199998
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470802726260902, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: availableColors.Array.data[1].g
-      value: 0.7066667
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470802726260902, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: availableColors.Array.data[1].b
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470802726260902, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: availableColors.Array.data[3].r
-      value: 0.21866666
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470802726260902, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: availableColors.Array.data[3].g
-      value: 0.28887978
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745470802726260902, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: availableColors.Array.data[3].b
-      value: 0.6431373
-      objectReference: {fileID: 0}
     - target: {fileID: 3847441766768979610, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -901,31 +801,16 @@ PrefabInstance:
       propertyPath: zeroDepthOffsetElement
       value: 
       objectReference: {fileID: 831628974}
-    - target: {fileID: 5208795885119175583, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: triggerAtDepth
-      value: 59
-      objectReference: {fileID: 0}
     - target: {fileID: 5208795885213623509, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: zeroDepthOffsetElement
-      value: 
-      objectReference: {fileID: 831628974}
-    - target: {fileID: 5208795885213623509, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: triggerAtDepth
-      value: 59
-      objectReference: {fileID: 0}
-    - target: {fileID: 5208795885239646381, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
         type: 3}
       propertyPath: zeroDepthOffsetElement
       value: 
       objectReference: {fileID: 831628974}
     - target: {fileID: 5208795885239646381, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
         type: 3}
-      propertyPath: triggerAtDepth
-      value: 59
-      objectReference: {fileID: 0}
+      propertyPath: zeroDepthOffsetElement
+      value: 
+      objectReference: {fileID: 831628974}
     - target: {fileID: 5208795885258386210, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
         type: 3}
       propertyPath: zeroDepthOffsetElement
@@ -986,86 +871,11 @@ PrefabInstance:
       propertyPath: zeroDepthOffsetElement
       value: 
       objectReference: {fileID: 831628974}
-    - target: {fileID: 5208795886660241797, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: triggerAtDepth
-      value: 59
-      objectReference: {fileID: 0}
     - target: {fileID: 5208795886767803569, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
         type: 3}
       propertyPath: zeroDepthOffsetElement
       value: 
       objectReference: {fileID: 831628974}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_LightVolumeOpacity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[0]
-      value: 1448901341
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[1]
-      value: 902261281
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[2]
-      value: -1171099521
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[3]
-      value: 1150208003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[5]
-      value: -855974299
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[6]
-      value: 1516454895
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[7]
-      value: 1166663407
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[8]
-      value: -1193141055
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[9]
-      value: -407696867
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.5993186
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.3443396
-      objectReference: {fileID: 0}
-    - target: {fileID: 5690894980686981720, guid: 5c164616050cbba4d9d1ff5fa2b9be38,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c164616050cbba4d9d1ff5fa2b9be38, type: 3}
 --- !u!1 &522206760
