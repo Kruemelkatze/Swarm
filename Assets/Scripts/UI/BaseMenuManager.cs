@@ -198,6 +198,11 @@ public class BaseMenuManager : MonoBehaviour
         }
     }
 
+    public void OpenUrl(string url)
+    {
+        Application.OpenURL(url);
+    }
+
 #if UNITY_EDITOR
     [UnityEditor.CustomEditor(typeof(BaseMenuManager))]
     public class BaseMenuManagerCustomEditor : UnityEditor.Editor
