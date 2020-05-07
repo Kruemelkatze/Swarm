@@ -350,12 +350,12 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0.09888322
-      inSlope: 0.14951482
-      outSlope: 0.14951482
+      value: 0.2
+      inSlope: 0.012314099
+      outSlope: 0.012314099
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.053333342
+      inWeight: 0.17257994
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -643,7 +643,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
