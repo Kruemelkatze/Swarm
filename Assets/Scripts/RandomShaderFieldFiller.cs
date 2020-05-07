@@ -10,6 +10,7 @@ public class RandomShaderFieldFiller : MonoBehaviour
     void Start()
     {
         var rend = GetComponent<Renderer>();
+        rend = rend != null ? rend : GetComponentInChildren<Renderer>();
         if (rend && rend.material)
         {
             rend.material.SetFloat(RandomShaderField, Random.value);
