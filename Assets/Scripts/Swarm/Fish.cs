@@ -18,6 +18,9 @@ public class Fish : MonoBehaviour
 
     [SerializeField] [Min(0)] private float speedVariation = 1;
 
+    [SerializeField] private ParticleSystem deathParticleSystem;
+    
+
     public int index;
 
     private Swarm _swarm;
@@ -76,6 +79,12 @@ public class Fish : MonoBehaviour
 
     public void Eaten()
     {
+        if (deathParticleSystem)
+        {
+            var dps = Instantiate(deathParticleSystem, transform.position, Quaternion.identity);
+            dps.Play();
+        }
+        
         SimplyRemove();
     }
 }
