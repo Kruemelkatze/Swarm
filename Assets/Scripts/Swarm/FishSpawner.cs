@@ -31,11 +31,12 @@ public class FishSpawner : MonoBehaviour
 
     [Header("Spawn Settings")] [SerializeField]
     private int spawnCount = 10;
+
     [SerializeField] private Transform spawnLocation;
     [SerializeField] private Transform spawnLocationOutsideLeft;
     [SerializeField] private Transform spawnLocationOutsideRight;
     [SerializeField] private float outsideSpawnYOffset = 4;
-    
+
     [SerializeField] private int maxFishSpawns;
 
     [SerializeField] private float spawnRadius = 2;
@@ -45,11 +46,12 @@ public class FishSpawner : MonoBehaviour
     private bool drawDebugInfo = true;
 
     [SerializeField] private List<Fish> fishes = new List<Fish>();
-    [SerializeField] private List<Vector2> _spawnLocations = new List<Vector2>() {Vector2.up};
+    [SerializeField] private LinkedList<Vector2> _spawnLocations = new LinkedList<Vector2>();
 
     public bool SpawnEnabled = true;
 
     private GameController gc;
+
     private void Awake()
     {
         Hub.Register<FishSpawner>(this);
@@ -65,12 +67,13 @@ public class FishSpawner : MonoBehaviour
 
         Gizmos.DrawWireSphere(spawnLocation.position, spawnRadius);
 
-        for (int i = 0; i < _spawnLocations.Count; i++)
+        var i = 0;
+        foreach (var loc in _spawnLocations)
         {
-            var loc = _spawnLocations[i];
             var c = new Color(1, 1, 0, 1 - ((float) i / _spawnLocations.Count));
             Gizmos.color = c;
             Gizmos.DrawSphere(spawnLocation.position + (Vector3) loc, fishRadius);
+            i++;
         }
     }
 #endif
@@ -97,7 +100,7 @@ public class FishSpawner : MonoBehaviour
             _localGrowthTick = growthTick;
             if (SpawnEnabled)
             {
-                Spawn((int)growthRate, true);
+                Spawn((int) growthRate, true);
             }
         }
     }
@@ -111,11 +114,12 @@ public class FishSpawner : MonoBehaviour
         var sampler = new PoissonDiscSampler(2 * spawnRadius, 2 * spawnRadius, fishRadius);
         var half = Vector2.one * spawnRadius;
         var sqr = spawnRadius * spawnRadius;
-        _spawnLocations = sampler.Samples()
+        var locs = sampler.Samples()
             .Select(loc => loc - half)
             .Where(loc => loc.sqrMagnitude < sqr)
             .OrderBy(loc => loc.sqrMagnitude)
             .ToList();
+        _spawnLocations = new LinkedList<Vector2>(locs);
 
         maxFishSpawns = _spawnLocations.Count;
     }
@@ -129,11 +133,21 @@ public class FishSpawner : MonoBehaviour
         for (int i = 0; i < maxNum; i++)
         {
             var index = fishIndex + i;
-            
+
             // Main Fish Spawn
-            var localPos = _spawnLocations[index];
+            Vector2 localPos;
+            if (_spawnLocations.Count > 0)
+            {
+                localPos = _spawnLocations.First();
+                _spawnLocations.RemoveFirst();
+            }
+            else
+            {
+                localPos = Vector2.zero;
+            }
+
             var isLeftFish = localPos.x < 0;
-            
+
             var fish = Instantiate(fishPrefab, fishContainer);
             var fishScript = fish.GetComponent<Fish>();
 
@@ -147,8 +161,8 @@ public class FishSpawner : MonoBehaviour
             {
                 effectiveLocation = spawnLocation.position;
             }
-            
-            fish.transform.position = effectiveLocation + (Vector3) _spawnLocations[index];
+
+            fish.transform.position = effectiveLocation + (Vector3) localPos;
             // var diff = transform.position - fish.transform.position;
             // diff.Normalize();
             // float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
@@ -164,7 +178,7 @@ public class FishSpawner : MonoBehaviour
                 fishesLookAt,
                 isLeftFish ? splitLeftLocation : splitRightLocation,
                 isLeftFish ? splitLeftLookAt : splitRightLookAt,
-                _spawnLocations[index]
+                localPos
             );
 
             fishes.Add(fishScript);
@@ -186,11 +200,39 @@ public class FishSpawner : MonoBehaviour
     public void RemoveFish(Fish fish)
     {
         fishes.Remove(fish);
-        var pos = _spawnLocations[fish.index];
-        _spawnLocations.RemoveAt(fish.index);
-        _spawnLocations.Add(pos);
+        //var pos = _spawnLocations[fish.index];
+        //_spawnLocations.RemoveAt(fish.index);
+        //_spawnLocations.Add(pos);
 
         fish.Eaten();
+        ReinsertFishSpawnPosition(fish.GetRelativeTargetPosition());
+    }
+
+    private void ReinsertFishSpawnPosition(Vector2 fishPos)
+    {
+        var sqrMagn = fishPos.sqrMagnitude;
+        LinkedListNode<Vector2> insertBeforeElement = null;
+        var currentNode = _spawnLocations.First;
+        while (currentNode != null)
+        {
+            if (currentNode.Value.sqrMagnitude > sqrMagn)
+            {
+                insertBeforeElement = currentNode;
+                break;
+            }
+
+            currentNode = currentNode.Next;
+        }
+
+
+        if (insertBeforeElement != null)
+        {
+            _spawnLocations.AddBefore(insertBeforeElement, fishPos);
+        }
+        else
+        {
+            _spawnLocations.AddLast(fishPos);
+        }
     }
 
 

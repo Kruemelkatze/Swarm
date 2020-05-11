@@ -78,6 +78,11 @@ public class Fish : MonoBehaviour
         this.splitLookAtTransform = splitLookAtTransform;
     }
 
+    public Vector2 GetRelativeTargetPosition()
+    {
+        return relativeTargetPosition;
+    }
+
     public void Eaten()
     {
         if (deathParticleSystem)
