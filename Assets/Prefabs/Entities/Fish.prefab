@@ -56,6 +56,7 @@ MonoBehaviour:
   speedVariation: 1
   deathParticleSystem: {fileID: 8730699006443136478, guid: 130f58afa2b51a64fa94ea341a91b22b,
     type: 3}
+  particleLifetimeVariation: 0.2
   index: 0
 --- !u!212 &4724859766437018759
 SpriteRenderer:

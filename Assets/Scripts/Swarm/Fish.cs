@@ -19,7 +19,8 @@ public class Fish : MonoBehaviour
     [SerializeField] [Min(0)] private float speedVariation = 1;
 
     [SerializeField] private ParticleSystem deathParticleSystem;
-    
+    [Range(0, 1)] [SerializeField] private float particleLifetimeVariation = 0.2f;
+
 
     public int index;
 
@@ -82,9 +83,12 @@ public class Fish : MonoBehaviour
         if (deathParticleSystem)
         {
             var dps = Instantiate(deathParticleSystem, transform.position, Quaternion.identity);
+            var lifetimeMultiplier = 1 + Random.Range(-particleLifetimeVariation, particleLifetimeVariation);
+            var m = dps.main;
+            m.startLifetimeMultiplier *= lifetimeMultiplier;
             dps.Play();
         }
-        
+
         SimplyRemove();
     }
 }
